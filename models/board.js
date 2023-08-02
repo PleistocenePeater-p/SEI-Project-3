@@ -23,13 +23,6 @@ const cardSchema = new Schema({
 // that our stored in the database should look like
 const boardSchema = new mongoose.Schema({
   title: { type: String, required: true },
-  releaseYear: {
-    type: Number,
-    default: function() {
-      return new Date().getFullYear();
-    },
-    min: 1927
-  },
   // a card belongs to a board
   cards: [cardSchema],// using embedding to create the relationship
 });
