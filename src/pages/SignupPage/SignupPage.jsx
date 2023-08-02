@@ -89,8 +89,8 @@ export default function SignUpPage({handleSignUpOrLogin}){
 		return (
 			<Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
 			 <Grid.Column style={{ maxWidth: 450 }}>
-				<Header as="h2" textAlign="center">
-                    Welcome to DreamMapper
+				<Header textAlign="center">
+                    <h2>Welcome to DreamMapper!</h2>
                     <h5>What've you been dreaming about?</h5>
                 </Header>
 			   <Form autoComplete="off" onSubmit={handleSubmit}>
