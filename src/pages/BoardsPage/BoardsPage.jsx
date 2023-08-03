@@ -48,6 +48,6 @@ export default function BoardsPage({user, handleLogout}){
       }
 
       return(
-        <div>Boards Page MOTHERFUCKER!!!!</div>
+        <div>Boards Page!!!!</div>
       )
 }
