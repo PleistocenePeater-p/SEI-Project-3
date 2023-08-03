@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Button, Form, Grid, Segment } from "semantic-ui-react";
 
-export default function AddPuppyForm({handleAddPost}) {
+export default function AddBoardForm({handleAddBoard}) {
     // create the state, pay attention to how the inputs are setup!o
     const [state, setState] = useState({
       caption: ''
     })
+    const [boards, setBoards] = useState([]);
 
     function handleChange(e){
         setState({
@@ -14,8 +15,11 @@ export default function AddPuppyForm({handleAddPost}) {
         })
       }
 
+
+
     function handleSubmit(e){
-        handleAddBoard()
+        
+        handleAddBoard(e)
     }
       return (
         <Segment>
@@ -30,7 +34,7 @@ export default function AddPuppyForm({handleAddPost}) {
             />
             <Form.Input
               className="form-control"
-              name="photo"
+              name="caption"
               value={state.caption}
               placeholder="Add a caption"
               onChange={handleChange}

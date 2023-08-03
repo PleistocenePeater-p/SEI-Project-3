@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link, useNavigate} from 'react-router-dom'
+import AddBoardForm from "../../components/ErrorMessage/AddBoardForm/AddBoardForm";
+
+
 
 import {
 	Button,
@@ -35,6 +38,19 @@ export default function BoardsPage({user, handleLogout}){
           console.log(err, " err in boardsPage");
         }
       }
+
+      function handleAddBoard(e) {
+        try {
+            console.log(e.target.value, "here is e.target.value")
+            console.log(e.target.title.value)
+        setBoards({
+            ...boards,
+            [e.target.name]: e.target.title.value
+        }) 
+        } catch(err){
+            console.log(err, "error")
+        }
+    }
       useEffect(() => {
         getBoards();
       }, [username]);
@@ -48,6 +64,14 @@ export default function BoardsPage({user, handleLogout}){
       }
 
       return(
-        <div>Boards Page!!!!</div>
+      <div>Boards Page!!!!
+        <Grid centered>
+            <Grid.Row>
+                <Grid.Column style={{ maxWidth: 450 }}>
+                    <AddBoardForm handleAddBoard={handleAddBoard} />
+                </Grid.Column>
+            </Grid.Row>
+        </Grid>
+      </div>
       )
 }
