@@ -15,6 +15,7 @@ import {
 import userService from "../../utils/userService";
 
 export default function BoardsPage({user, handleLogout}){
+    const [boards, setBoards] = useState([]);
     const [userState, setUserState] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -26,7 +27,7 @@ export default function BoardsPage({user, handleLogout}){
           setLoading(true);
           const response = await userService.getBoards(username);
           console.log(response);
-    //      setPosts(response.posts);
+          setBoards(response.boards);
           setUserState(response.user);
           setLoading(false)
         } catch (err) {
@@ -35,7 +36,6 @@ export default function BoardsPage({user, handleLogout}){
         }
       }
       useEffect(() => {
-   
         getBoards();
       }, [username]);
 
@@ -48,6 +48,6 @@ export default function BoardsPage({user, handleLogout}){
       }
 
       return(
-        <div>Boards Page</div>
+        <div>Boards Page MOTHERFUCKER!!!!</div>
       )
 }

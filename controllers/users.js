@@ -12,6 +12,8 @@ async function boards(req, res) {
   try {
     const user = await User.findOne({username: req.params.username})
     if(!user) return res.status(404).json({error: 'User not found'})
+    console.log("check check ")
+    res.status(200).json({})
     // const posts = await Post.find({user: user._id}).populate("user").exec();
   } catch (err) {
     res.status(400).json({err})
