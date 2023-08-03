@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignUpPage from "./pages/SignupPage/SignupPage";
+import BoardsPage from "./pages/BoardsPage/BoardsPage";
 
 import userService from "./utils/userService";
 
@@ -21,9 +22,10 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<h1>Home Pageeeeeeeeeee</h1>} />
+      <Route path="/" element={<h1>DreamMapper</h1>} />
       <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin}/>} />
       <Route path="/signup" element={<SignUpPage handleSignUpOrLogin={handleSignUpOrLogin}/>} />
+      <Route path="/:username" element={<BoardsPage user={user} handleLogout={handleLogout}/> } />
     </Routes>
   );
 }

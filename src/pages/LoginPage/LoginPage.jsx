@@ -31,7 +31,7 @@ export default function LoginPage({handleSignUpOrLogin}) {
 
     try {
       await userService.login(state)
-      navigate('/')
+      navigate('/:username')
       handleSignUpOrLogin(); 
 
     } catch(err){
