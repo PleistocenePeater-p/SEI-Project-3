@@ -20,23 +20,23 @@ export default function BoardsPage({user, handleLogout}){
     const [error, setError] = useState("");
     const { username } = useParams();
     
-    async function getProfile() {
+    async function getBoards() {
     
         try {
           setLoading(true);
-          const response = await userService.getProfile(username);
+          const response = await userService.getBoards(username);
           console.log(response);
-          setPosts(response.posts);
+    //      setPosts(response.posts);
           setUserState(response.user);
           setLoading(false)
         } catch (err) {
-          setError("Error loading profile");
-          console.log(err, " err in profile");
+          setError("Error loading boards");
+          console.log(err, " err in boardsPage");
         }
       }
       useEffect(() => {
    
-        getProfile();
+        getBoards();
       }, [username]);
 
       if (loading) {

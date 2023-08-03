@@ -4,8 +4,19 @@ const SECRET = process.env.SECRET;
 
 module.exports = {
   signup,
-  login
+  login,
+  boards
 };
+
+async function boards(req, res) {
+  try {
+    const user = await User.findOne({username: req.params.username})
+    if(!user) return res.status(404).json({error: 'User not found'})
+    // const posts = await Post.find({user: user._id}).populate("user").exec();
+  } catch (err) {
+    res.status(400).json({err})
+  }
+}
 
 async function signup(req, res) {
   const user = new User(req.body);

@@ -22,7 +22,7 @@ export default function LoginPage({handleSignUpOrLogin}) {
     password: ''
   })
 
-  //const [error, setError] = useState('')
+  const [error, setError] = useState('')
 
   const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ export default function LoginPage({handleSignUpOrLogin}) {
 
     try {
       await userService.login(state)
-      navigate('/:username')
+      navigate('/')
       handleSignUpOrLogin(); 
 
     } catch(err){
