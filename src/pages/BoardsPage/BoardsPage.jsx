@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link, useNavigate} from 'react-router-dom'
-import AddBoardForm from "../../components/ErrorMessage/AddBoardForm/AddBoardForm";
+import AddBoardForm from "../../components/AddBoardForm/AddBoardForm";
+import BoardGallery from "../../components/BoardGallery/BoardGallery";
 import * as postBoardApi from "../../utils/postBoardApi";
-import BoardsGallery from "../../components/BoardsGallery";
+import userService from "../../utils/userService";
 
 
 import {
@@ -17,7 +18,6 @@ import {
 	Segment,
   } from "semantic-ui-react";
 
-import userService from "../../utils/userService";
 
 export default function BoardsPage({user, handleLogout}){
     const [boards, setBoards] = useState([]);
@@ -64,18 +64,20 @@ export default function BoardsPage({user, handleLogout}){
       }
 
       return(
-      <div>Boards Page
+      <div>
         <Grid centered>
-            <Grid.Row>
-                <Grid.Column style={{ maxWidth: 450 }}>
-                    <AddBoardForm handleAddBoard={handleAddBoard} />
-                </Grid.Column>
-            </Grid.Row>
             <Grid.Row>
                 <Grid.Column>
                     <Card.Group>
-                        <BoardsGallery boards={boards} />
+                        Dream Boards
+                        <BoardGallery boards={boards} />
                     </Card.Group>
+                </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+                
+                <Grid.Column style={{ maxWidth: 450 }}>Add Board
+                    <AddBoardForm handleAddBoard={handleAddBoard} />
                 </Grid.Column>
             </Grid.Row>
         </Grid>
