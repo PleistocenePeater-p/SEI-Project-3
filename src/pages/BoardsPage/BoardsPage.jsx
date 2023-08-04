@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Link, useNavigate} from 'react-router-dom'
 import AddBoardForm from "../../components/ErrorMessage/AddBoardForm/AddBoardForm";
 import * as postBoardApi from "../../utils/postBoardApi";
+import BoardsGallery from "../../components/BoardsGallery";
 
 
 import {
@@ -73,7 +74,7 @@ export default function BoardsPage({user, handleLogout}){
             <Grid.Row>
                 <Grid.Column>
                     <Card.Group>
-                        {boards}
+                        <BoardsGallery boards={boards} />
                     </Card.Group>
                 </Grid.Column>
             </Grid.Row>
