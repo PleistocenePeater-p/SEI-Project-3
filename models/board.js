@@ -22,6 +22,7 @@ const cardSchema = new Schema({
 // that the documents created from the Board Model
 // that our stored in the database should look like
 const boardSchema = new mongoose.Schema({
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   title: {type: String, required: true},
   caption: {type: String, required: true},
   // a card belongs to a board

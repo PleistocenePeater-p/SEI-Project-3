@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link, useNavigate} from 'react-router-dom'
 import AddBoardForm from "../../components/ErrorMessage/AddBoardForm/AddBoardForm";
-
+import * as postBoardApi from "../../utils/postBoardApi";
 
 
 import {
@@ -25,30 +25,28 @@ export default function BoardsPage({user, handleLogout}){
     const { username } = useParams();
     
     async function getBoards() {
-    
         try {
-          setLoading(true);
-          const response = await userService.getBoards(username);
-          console.log(response);
-          setBoards(response.boards);
-          setUserState(response.user);
-          setLoading(false)
+            setLoading(true);
+            const response = await userService.getBoards(username);
+            console.log(response);
+            setBoards(response.boards);
+            setUserState(response.user);
+            setLoading(false)
         } catch (err) {
-          setError("Error loading boards");
-          console.log(err, " err in boardsPage");
+            setError("Error loading boards");
+            console.log(err, " err in boardsPage");
         }
       }
 
-      function handleAddBoard(e) {
+      async function handleAddBoard(data) {
+        console.log(data, "<-- handleAddBoard(data) before try/catch")
         try {
-            console.log(e.target.value, "here is e.target.value")
-            console.log(e.target.title.value)
-        setBoards({
-            ...boards,
-            [e.target.name]: e.target.title.value
-        }) 
+            const responseData = await postBoardApi.create(data);
+            console.log(responseData, " <-- response from server in handleAddBoard");
+            setBoards([responseData.data, ...boards]); 
         } catch(err){
-            console.log(err, "error")
+            console.log(err, "error");
+            setError("Error creating a board. BoardsPage --> handleAddBoard");
         }
     }
       useEffect(() => {

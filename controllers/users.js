@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Board = require('../models/board');
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
 
@@ -13,8 +14,10 @@ async function boards(req, res) {
     const user = await User.findOne({username: req.params.username})
     if(!user) return res.status(404).json({error: 'User not found'})
     console.log("check check ")
-    res.status(200).json({})
-    // const posts = await Post.find({user: user._id}).populate("user").exec();
+    const boards = await Board.find({user: user._id}).populate("user").exec();
+    res.status(200).json({boards})
+    console.log(boards, "boards")
+//    res.status(200).json({boards: boards, user: user})
   } catch (err) {
     res.status(400).json({err})
   }

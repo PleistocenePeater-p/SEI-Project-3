@@ -1,15 +1,16 @@
 import tokenService from "./tokenService";
-const BASE_URL = '/api/posts/';
+const BASE_URL = '/api/boards/';
 
 export function create(data){
 	return fetch(BASE_URL, {
 		method: 'POST',
-		body: data.JSON.stringify(data),
+		body: JSON.stringify(data),
 		headers: {
 			// convention for sending jwts
 			
-			Authorization: "Bearer " + tokenService.getToken() // < this is how we get the token from localstorage and and it to our api request
+			Authorization: "Bearer " + tokenService.getToken(), // < this is how we get the token from localstorage and and it to our api request
 			// so the server knows who the request is coming from when the client is trying to make a POST
+            'Content-Type': 'application/json'
 		}
 	}).then(responseFromTheServer => {
 		if(responseFromTheServer.ok) return responseFromTheServer.json() // so if everything went well in the response return 

@@ -4,6 +4,7 @@ import { Button, Form, Grid, Segment } from "semantic-ui-react";
 export default function AddBoardForm({handleAddBoard}) {
     // create the state, pay attention to how the inputs are setup!o
     const [state, setState] = useState({
+        title: "",
       caption: ''
     })
     const [boards, setBoards] = useState([]);
@@ -18,8 +19,8 @@ export default function AddBoardForm({handleAddBoard}) {
 
 
     function handleSubmit(e){
-        
-        handleAddBoard(e)
+        e.preventDefault();
+        handleAddBoard(state)
     }
       return (
         <Segment>
