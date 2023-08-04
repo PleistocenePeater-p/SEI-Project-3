@@ -3,24 +3,21 @@ import { Button, Form, Grid, Segment } from "semantic-ui-react";
 
 export default function AddBoardForm({handleAddBoard}) {
     // create the state, pay attention to how the inputs are setup!o
-    const [state, setState] = useState({
+    const [boardState, setBoardState] = useState({
         title: "",
-      caption: ''
+        caption: ""
     })
-    const [boards, setBoards] = useState([]);
 
     function handleChange(e){
-        setState({
-            ...state,
+        setBoardState({
+            ...boardState,
             [e.target.name]: e.target.value
         })
       }
 
-
-
     function handleSubmit(e){
         e.preventDefault();
-        handleAddBoard(state)
+        handleAddBoard(boardState)
     }
       return (
         <Segment>
@@ -28,7 +25,7 @@ export default function AddBoardForm({handleAddBoard}) {
             <Form.Input
               className="form-control"
               name="title"
-              value={state.title}
+              value={boardState.title}
               placeholder="Title"
               onChange={handleChange}
               required
@@ -36,7 +33,7 @@ export default function AddBoardForm({handleAddBoard}) {
             <Form.Input
               className="form-control"
               name="caption"
-              value={state.caption}
+              value={boardState.caption}
               placeholder="Add a caption"
               onChange={handleChange}
               required

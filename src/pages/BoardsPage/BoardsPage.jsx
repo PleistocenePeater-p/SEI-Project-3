@@ -9,6 +9,7 @@ import {
 	Button,
 	Form,
 	Grid,
+    Card,
 	Header,
 	Image,
 	Message,
@@ -62,11 +63,18 @@ export default function BoardsPage({user, handleLogout}){
       }
 
       return(
-      <div>Boards Page!!!!
+      <div>Boards Page
         <Grid centered>
             <Grid.Row>
                 <Grid.Column style={{ maxWidth: 450 }}>
                     <AddBoardForm handleAddBoard={handleAddBoard} />
+                </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+                <Grid.Column>
+                    <Card.Group>
+                        {boards}
+                    </Card.Group>
                 </Grid.Column>
             </Grid.Row>
         </Grid>
