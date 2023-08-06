@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Link, useNavigate} from 'react-router-dom'
 import AddBoardForm from "../../components/AddBoardForm/AddBoardForm";
 import BoardGallery from "../../components/BoardGallery/BoardGallery";
-import * as postBoardApi from "../../utils/postBoardApi";
+import * as postBoardApi from '../../utils/postBoardApi'
 import userService from "../../utils/userService";
 
 
@@ -26,10 +26,10 @@ export default function BoardsPage({user, handleLogout}){
     const [error, setError] = useState("");
     const { username } = useParams();
     
-    async function getBoards() {
+    async function handleGetBoards() {
         try {
             setLoading(true);
-            const response = await userService.getBoards(username);
+            const response = await postBoardApi.getBoards(username);
             console.log(response);
             setBoards(response.boards);
             setUserState(response.user);
@@ -52,7 +52,7 @@ export default function BoardsPage({user, handleLogout}){
         }
     }
       useEffect(() => {
-        getBoards();
+        handleGetBoards();
       }, [username]);
 
       if (loading) {

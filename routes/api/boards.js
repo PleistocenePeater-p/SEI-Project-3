@@ -4,7 +4,7 @@ const boardsCtrl = require('../../controllers/boards');
 
 /*---------- Public Routes ----------*/
 router.post('/', boardsCtrl.create);
-//router.get('/', boardsCtrl.index)
+router.get('/:username', boardsCtrl.index);
 
 /*---------- Protected Routes ----------*/
 
