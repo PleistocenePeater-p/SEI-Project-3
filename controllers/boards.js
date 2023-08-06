@@ -3,7 +3,20 @@ const User = require('../models/user');
 module.exports = {
     create,
     index,
+    edit
   };
+
+  async function edit(req, res) {
+    console.log(req.params)
+    console.log(req.body)
+    try {
+      const boards = await Board.findOneAndUpdate({_id: req.params.id}, req.body)
+      res.status(200).json({boards});
+    } catch (err) {
+      res.status(400).json({error: err});
+    }
+  }
+
 
   async function create (req, res) {
     console.log(req.body, "<---- req.body")
@@ -18,7 +31,7 @@ module.exports = {
         // this response will show up in the allBoardsPage in   const responseData = await postsApi.create(post);
         res.status(201).json({ data: board }); // <- this is what responseData should be
       } catch (err) {
-        res.status(400).json({ error: err });
+        res.status(400).json({error: err});
       }
   }
 
@@ -32,6 +45,6 @@ module.exports = {
       console.log(boards, "boards -users Controller")
   //    res.status(200).json({boards: boards, user: user})
     } catch (err) {
-      res.status(400).json({err})
+      res.status(400).json({error: err})
     }
   }

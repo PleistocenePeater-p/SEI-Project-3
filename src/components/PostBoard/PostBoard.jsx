@@ -6,6 +6,10 @@ return (
         <Card.Content>
             <Card.Description>{board.title}</Card.Description>
             <Card.Description>{board.caption}</Card.Description>
+            </Card.Content>
+      <Card.Content extra textAlign={"right"}>
+        <Icon name={"square"} size="large" />
+        Edit
       </Card.Content>
     </Card>
     );

@@ -6,6 +6,7 @@ const boardsCtrl = require('../../controllers/boards');
 router.post('/', boardsCtrl.create);
 router.get('/:username', boardsCtrl.index);
 
+
 /*---------- Protected Routes ----------*/
 
 module.exports = router;
