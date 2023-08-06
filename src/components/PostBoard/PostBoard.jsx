@@ -1,6 +1,7 @@
 import { Card, Icon, Image } from "semantic-ui-react";
 
 function PostBoard({user, board}) {
+    
 return (
     <Card key={board._id}>
         <Card.Content>

@@ -21,6 +21,20 @@ export function create(data){
 	})
 }
 
+export function edit(data, id) {
+    return fetch(`${BASE_URL}${id}`, {  // append the id to the base URL to target the specific board
+        method: 'PUT', 
+        body: JSON.stringify(data),
+        headers: {
+            Authorization: "Bearer " + tokenService.getToken(),
+            'Content-Type': 'application/json'
+        }
+    }).then(responseFromTheServer => {
+        if(responseFromTheServer.ok) return responseFromTheServer.json()
+        throw new Error('Something went wrong in edit Post');
+    })
+}
+
 export function getBoards(username){
 	return fetch(`${BASE_URL}${username}`, {
 	  method: 'GET',
