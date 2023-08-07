@@ -14,7 +14,10 @@ const cardSchema = new Schema({
 });
 
 
-
+const bookmarkSchema = mongoose.Schema({
+  username: String,
+  userId: {type: mongoose.Schema.Types.ObjectId}
+})
 
 // ONE BOARD
 
@@ -27,6 +30,9 @@ const boardSchema = new mongoose.Schema({
   caption: {type: String, required: true},
   // a card belongs to a board
   cards: [cardSchema],// using embedding to create the relationship
+  bookmarked: [bookmarkSchema] //embedded
 });
+
+
 
 module.exports = mongoose.model('Board', boardSchema);
