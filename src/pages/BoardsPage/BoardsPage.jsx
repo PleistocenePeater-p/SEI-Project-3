@@ -6,6 +6,7 @@ import BoardGallery from "../../components/BoardGallery/BoardGallery";
 import * as postBoardApi from '../../utils/postBoardApi'
 import userService from "../../utils/userService";
 import * as bookmarkApi from '../../utils/bookmarkApi'
+import PageHeader from "../../components/Header/Header";
 
 
 import {
@@ -82,15 +83,21 @@ export default function BoardsPage({user, handleLogout}){
 
       if (loading) {
         return (
-          <>
-            <h1>Loading....</h1>
-          </>
+        <>
+        <PageHeader handleLogout={handleLogout} user={user}/>
+        <h1>Loading....</h1>
+        </>
         );
       }
 
       return(
       <div>
         <Grid centered>
+            <Grid.Row>
+              <Grid.Column>
+                <PageHeader handleLogout={handleLogout} user={user}/>
+              </Grid.Column>
+            </Grid.Row>
             <Grid.Row>
                 <Grid.Column>
                     <Card.Group>
