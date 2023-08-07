@@ -2,9 +2,10 @@ import tokenService from "./tokenService";
 const BASE_URL = '/api/boards/';
 
 export function create(data){
+	console.log(data, "CHECKING POSTBOARD API.............")
 	return fetch(BASE_URL, {
 		method: 'POST',
-		body: JSON.stringify(data),
+		body: JSON.stringify(data), //Sunday night, 5:48PM this was formerly JSON.stringify(data) //Re-added from body: data
 		headers: {
 			// convention for sending jwts
 			
@@ -13,6 +14,7 @@ export function create(data){
             'Content-Type': 'application/json'
 		}
 	}).then(responseFromTheServer => {
+		console.log(responseFromTheServer, "This is the responseFrom the SEerver")
 		if(responseFromTheServer.ok) return responseFromTheServer.json() // so if everything went well in the response return 
 		//the parsed json to where we called the function
 
@@ -36,7 +38,7 @@ export function edit(data, id) {
 }
 
 export function getBoards(username){
-	return fetch(`${BASE_URL}${username}`, {
+	return fetch(`${BASE_URL}`, {
 	  method: 'GET',
 	  headers: {
 			  // convention for sending jwts

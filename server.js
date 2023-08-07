@@ -12,7 +12,7 @@ const app = express();
 
 const userRouter = require("./routes/api/users")
 const boardRouter = require('./routes/api/boards')
-const bookmarkRouter = require('./routes/api/bookmarks')
+//const bookmarkRouter = require('./routes/api/bookmarks')
 
 // add in when the app is ready to be deployed
 // app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
@@ -27,9 +27,9 @@ app.use(require("./config/auth"));
 // api routes must be before the "catch all" route
 app.use("/api/users", userRouter);
 app.use('/api/boards', boardRouter);
-app.use('/api/bookmarks', bookmarkRouter)
+//app.use('/api/bookmarks', bookmarkRouter)
 
-app.use("/api/users", require("./routes/api/users"));
+//app.use("/api/users", require("./routes/api/users"));
 
 
 // "catch all" route
