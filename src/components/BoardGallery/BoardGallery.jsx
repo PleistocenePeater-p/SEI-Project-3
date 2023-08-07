@@ -3,10 +3,10 @@ import PostBoard from '../PostBoard/PostBoard'
 
 
 
-export default function BoardGallery({boards, user}){
+export default function BoardGallery({boards, user, bookmark, removeBookmark}){
 
     const postBoards = boards.map((board) => {
-        return <PostBoard board={board} key={board._id} user={user}/> 
+        return <PostBoard board={board} key={board._id} user={user} bookmark={bookmark} removeBookmark={removeBookmark}/> 
     })
 
     return (

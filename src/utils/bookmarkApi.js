@@ -5,7 +5,7 @@ const BASE_URL = '/api/bookmarks/'
 // THe user is logged in, so what do you have to include
 
 export function create(boardId){
-	return fetch(`${BASE_URL}boards/${boardId}/bookmarks`, {
+	return fetch(`${BASE_URL}${boardId}`, {
 		method: 'POST',
 		headers: {
 			// convention for sending jwts
@@ -20,7 +20,7 @@ export function create(boardId){
 }
 
 export function removeBookmark(bookmarkId){
-	return fetch(`${BASE_URL}boards/${bookmarkId}`, {
+	return fetch(`${BASE_URL}${bookmarkId}`, {
 		method: 'DELETE',
 		headers: {
 			// convention for sending jwts

@@ -5,6 +5,7 @@ import AddBoardForm from "../../components/AddBoardForm/AddBoardForm";
 import BoardGallery from "../../components/BoardGallery/BoardGallery";
 import * as postBoardApi from '../../utils/postBoardApi'
 import userService from "../../utils/userService";
+import * as bookmarkApi from '../../utils/bookmarkApi'
 
 
 import {
@@ -25,6 +26,26 @@ export default function BoardsPage({user, handleLogout}){
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     const { username } = useParams();
+
+    async function bookmark(boardId) {
+    try {
+      const response = await bookmarkApi.create(boardId)
+      handleGetBoards();
+    } catch(err) {
+      setError("Error adding bookmark");
+      console.log(err, " err in boardsPage");
+    }
+  }
+
+    async function removeBookmark(boardId) {
+    try {
+      const response = await bookmarkApi.removeBookmark(boardId)
+      handleGetBoards();
+    } catch(err) {
+      setError("Error adding bookmark");
+      console.log(err, " err in boardsPage");
+    }
+  }
     
     async function handleGetBoards() {
         try {
@@ -51,6 +72,10 @@ export default function BoardsPage({user, handleLogout}){
             setError("Error creating a board. BoardsPage --> handleAddBoard");
         }
     }
+
+
+
+
       useEffect(() => {
         handleGetBoards();
       }, [username]);
@@ -70,7 +95,7 @@ export default function BoardsPage({user, handleLogout}){
                 <Grid.Column>
                     <Card.Group>
                         Dream Boards
-                        <BoardGallery boards={boards} />
+                        <BoardGallery user={user} boards={boards} bookmark={bookmark} removeBookmark={removeBookmark}/>
                     </Card.Group>
                 </Grid.Column>
             </Grid.Row>
