@@ -1,5 +1,4 @@
 import React from "react";
-
 import {useState} from 'react'
 import { Link, useNavigate} from 'react-router-dom'
 
@@ -16,29 +15,24 @@ import {
 import userService from "../../utils/userService";
 
 export default function LoginPage({handleSignUpOrLogin}) {
-   
   const [state, setState] = useState({
     email: '',
     password: ''
   })
 
   const [error, setError] = useState('')
-
   const navigate = useNavigate();
 
   async function handleSubmit(e){
     e.preventDefault();
-
     try {
       await userService.login(state)
       navigate('/')
       handleSignUpOrLogin(); 
-
     } catch(err){
       console.log(err)
       setError('check terminal and console')
     }
-
   }
 
   function handleChange(e){

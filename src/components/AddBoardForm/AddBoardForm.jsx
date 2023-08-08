@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button, Form, Grid, Segment } from "semantic-ui-react";
 
 export default function AddBoardForm({handleAddBoard}) {
-    // create the state, pay attention to how the inputs are setup!o
     const [boardState, setBoardState] = useState({
         title: "",
         caption: ""

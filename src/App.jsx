@@ -32,8 +32,6 @@ function App() {
 
   }
 
-//<Route path="/" element={<h1>DreamMapper</h1>} />
-
   return (
     <Routes>
       <Route path="/" element={<BoardsPage user={user} handleLogout={handleLogout}/> } />

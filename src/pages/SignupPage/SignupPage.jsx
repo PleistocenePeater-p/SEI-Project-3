@@ -24,14 +24,8 @@ export default function SignUpPage({handleSignUpOrLogin}){
 			passwordConf: '',
 			bio: ''
 		})
-		
-		// this state will handle the file upload
 		const [selectedFile, setSelectedFile] = useState('')
-
 		const [error, setError] = useState('');
-		
-		// navigate is a function that just takes a path
-		// the path should match a route defined in the App.js
 		const navigate = useNavigate()
 
 		function handleChange(e){
@@ -48,11 +42,6 @@ export default function SignUpPage({handleSignUpOrLogin}){
 
 		async function handleSubmit(e){
 			e.preventDefault();
-
-			// ANYTIME YOU'RE SENDING A FILE TO THE SERVER
-			// You must create formdata!
-			// This needs to be done because the http request
-			// will be sent in two parts, the text, and the file
 			const formData = new FormData();
 			// key on req.file would be photo, 
 			formData.append('photo', selectedFile);
@@ -62,28 +51,15 @@ export default function SignUpPage({handleSignUpOrLogin}){
 			formData.append('password', state.password)	
 			formData.append('bio', state.bio)
 
-			// this for loop does the same thing as the code above ^^^
-			// for (let key in state){
-			// 	formData.append(key, state[fieldName])
-			// }
-
-
-
 			try {
-				// this line of code is making the fetch request to the server
-				// and sending our state object
-				// this is calling the signup fetch function defined in our utils/userService
 				const signUp = await userService.signup(formData)
 				console.log(signUp)
-				// navigate the user to the home page!
 				navigate('/');
-				handleSignUpOrLogin(); // this function comes from the APP component
-
+				handleSignUpOrLogin();
 			} catch(err){
 				console.log(err, ' err in handleSubmit');
 				setError('Check your terminal for your error and the chrome console!')
 			}
-
 		}
 	
 		return (
@@ -142,7 +118,5 @@ export default function SignUpPage({handleSignUpOrLogin}){
 			   </Form>
 			 </Grid.Column>
 		   </Grid>
-	   
 			 );
-	   
 		}

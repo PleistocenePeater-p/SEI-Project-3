@@ -6,9 +6,6 @@ function PostBoard({user, board, bookmark, removeBookmark}) {
     const boardIndex = board._id
     const bookmarkColor = bookmarkIndex > -1 ? 'teal' : 'grey';
     const clickHandler = bookmarkIndex > -1 ? () => removeBookmark(board.bookmarks[bookmarkIndex]._id) : () => bookmark(board._id)
-    console.log(user.username, "<---------------username")
-    console.log(board.user.username, "<--------------board.user.username")
-    console.log(board._id, "<---------------board._id")
 
 return (
     <Card key={board._id}>

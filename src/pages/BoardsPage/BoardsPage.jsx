@@ -43,7 +43,7 @@ export default function BoardsPage({user, handleLogout}){
       const response = await bookmarkApi.removeBookmark(boardId)
       handleGetBoards();
     } catch(err) {
-      setError("Error adding bookmark");
+      setError("Error removing bookmark");
       console.log(err, " err in boardsPage");
     }
   }
@@ -63,14 +63,12 @@ export default function BoardsPage({user, handleLogout}){
       }
 
       async function handleAddBoard(data) {
-        console.log(data, "<-- handleAddBoard(data) before try/catch")
         try {
             const responseData = await postBoardApi.create(data);
-            console.log(responseData, " <-- response from server in handleAddBoard");
             setBoards([responseData.data, ...boards]); 
         } catch(err){
-            console.log(err, "error");
-            setError("Error creating a board. BoardsPage --> handleAddBoard");
+          setError("Error creating a board");
+          console.log(err, " err in boardsPage");
         }
     }
 
