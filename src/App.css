@@ -3,10 +3,16 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  background: linear-gradient(-0deg, #c33990, #f24596, #fe415a, #ff3cbb);
-  background-size: 400% 400%;
-  animation: gradient 15s ease-in infinite;
+  background: linear-gradient(-200deg, #ee5cac, #ffa5a5, #ffd198, #ffdd00);
+  background-size: 700% 700%;
+  animation: gradient 10s ease-in infinite;
   height: 100vh;
+}
+
+@keyframes gradient {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 
 .logo {
@@ -21,20 +27,6 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-/* body {
-  background: linear-gradient(-33deg, #ff438b, #ff8c52, #ff6756, #ffae3c);
-  background-size: 400% 400%;
-  height: 100vh;
-} 
-#home-body {
-
-}*/
-
-@keyframes gradient {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
-}
 
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {

@@ -57,7 +57,7 @@ module.exports = {
   async function index(req, res) {
     console.log("YYYYYYYYYYYY INSIDE BOARDS CONTROLLER - INDEX YYYYYYYYYYYYYYYY")
     try {
-      const boards = await Board.find({}).populate("user").exec()
+      const boards = await Board.find({user : req.user._id}).populate("user").exec()
       res.status(200).json({boards})
     } catch (err) {
       res.status(400).json({error: err});
