@@ -9,9 +9,11 @@ require("./config/database");
 // Require controllers here
 
 const app = express();
+app.set('view engine', 'ejs');
 
 const userRouter = require("./routes/api/users")
 const boardRouter = require('./routes/api/boards')
+const cardRouter = require('./routes/api/cards')
 //const bookmarkRouter = require('./routes/api/bookmarks')
 
 // add in when the app is ready to be deployed
@@ -27,20 +29,21 @@ app.use(require("./config/auth"));
 // api routes must be before the "catch all" route
 app.use("/api/users", userRouter);
 app.use('/api/boards', boardRouter);
+app.use('/api/cards', cardRouter);
 //app.use('/api/bookmarks', bookmarkRouter)
 
 //app.use("/api/users", require("./routes/api/users"));
 
 
 // "catch all" route
+const manifest = require('./dist/manifest.json');
+
+app.use(express.static(path.join(__dirname, "dist")));
+
+// "catch all" route
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.render(path.join(__dirname, 'dist', 'index.ejs'), {manifest});
 });
-
-
-const port = process.env.PORT || 3001;
-
-
 
 
 const { PORT = 8000 } = process.env;

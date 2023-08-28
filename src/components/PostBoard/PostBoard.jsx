@@ -1,4 +1,5 @@
 import { Card, Icon, Image } from "semantic-ui-react";
+import { Route, Routes, Navigate, Link } from "react-router-dom";
 import * as bookmarkApi from '../../utils/bookmarkApi'
 
 function PostBoard({user, board, bookmark, removeBookmark}) {
@@ -8,7 +9,8 @@ function PostBoard({user, board, bookmark, removeBookmark}) {
     const clickHandler = bookmarkIndex > -1 ? () => removeBookmark(board.bookmarks[bookmarkIndex]._id) : () => bookmark(board._id)
 
 return (
-    <Card key={board._id}>
+  <Card key={board._id}>
+      <Link to={`/board/${board._id}`}>
         <Card.Content>
             <Card.Description>{board.title}</Card.Description>
             <Card.Description>{board.caption}</Card.Description>
@@ -17,6 +19,7 @@ return (
         <Icon name={"bookmark"} size="large"  color={bookmarkColor} onClick={clickHandler}/>
         Bookmark
       </Card.Content>
+  </Link>
     </Card>
     );
 }

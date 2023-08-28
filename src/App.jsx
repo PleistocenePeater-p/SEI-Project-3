@@ -1,7 +1,7 @@
 import { Route, Routes, Navigate, Link } from "react-router-dom";
 import "./App.css";
 import { useState } from "react";
-
+import InspectBoardPage from "./pages/InspectBoardPage/InspectBoardPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignUpPage from "./pages/SignupPage/SignupPage";
 import BoardsPage from "./pages/BoardsPage/BoardsPage";
@@ -38,6 +38,7 @@ function App() {
       <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin}/>} />
       <Route path="/signup" element={<SignUpPage handleSignUpOrLogin={handleSignUpOrLogin}/>} />
       <Route path="/:username" element={<BoardsPage user={user} handleLogout={handleLogout}/> } />
+      <Route path="/board/:id" element={<InspectBoardPage />} />
     </Routes>
   );
 }
